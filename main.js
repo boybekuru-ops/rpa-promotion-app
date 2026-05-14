@@ -1,5 +1,6 @@
 import { app, BrowserWindow, dialog } from 'electron';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import pkg from 'electron-updater';
 const { autoUpdater } = pkg;
@@ -41,21 +42,54 @@ app.whenReady().then(() => {
     });
 
     // Check for updates after the app is ready
+    const GITHUB_TOKEN = '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';
+    autoUpdater.setFeedURL({
+        provider: 'github',
+        owner: 'boybekuru-ops',
+        repo: 'rpa-promotion-app',
+        token: GITHUB_TOKEN
+    });
+
+    const logPath = path.join(app.getPath('userData'), 'update-log.txt');
+    const writeLog = (msg) => {
+        const time = new Date().toISOString();
+        fs.appendFileSync(logPath, `[${time}] ${msg}\n`);
+    };
+
+    writeLog('App started. Checking for updates...');
     autoUpdater.checkForUpdatesAndNotify();
 
     // Setup auto-updater events
-    autoUpdater.on('update-available', () => {
-        console.log('Update available.');
+    autoUpdater.on('checking-for-update', () => {
+        writeLog('Checking for update...');
     });
 
-    autoUpdater.on('update-downloaded', () => {
+    autoUpdater.on('update-available', (info) => {
+        writeLog(`Update available: ${info.version}`);
+    });
+
+    autoUpdater.on('update-not-available', () => {
+        writeLog('Update not available.');
+    });
+
+    autoUpdater.on('error', (err) => {
+        writeLog(`Update error: ${err.stack || err}`);
+        dialog.showMessageBox({
+            type: 'error',
+            title: 'Update Check Failed',
+            message: `Error: ${err.message}`
+        });
+    });
+
+    autoUpdater.on('update-downloaded', (info) => {
+        writeLog(`Update downloaded: ${info.version}`);
         dialog.showMessageBox({
             type: 'info',
             title: 'Update Ready',
-            message: 'A new version of RPA Promotion has been downloaded. The application will restart to install the update.',
-            buttons: ['Restart Now']
-        }).then(() => {
-            autoUpdater.quitAndInstall();
+            message: 'A new version has been downloaded. Restart now?',
+            buttons: ['Restart Now', 'Later']
+        }).then((result) => {
+            if (result.response === 0) autoUpdater.quitAndInstall();
         });
     });
 });

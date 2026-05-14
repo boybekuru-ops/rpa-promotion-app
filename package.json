@@ -1,6 +1,6 @@
 {
     "name": "rpa-shopat24-upload",
-    "version": "1.0.0",
+    "version": "1.0.4",
     "main": "main.js",
     "type": "module",
     "scripts": {
@@ -35,7 +35,7 @@
         "publish": [
             {
                 "provider": "github",
-                "owner": "boybakuru-ops",
+                "owner": "boybekuru-ops",
                 "repo": "rpa-promotion-app"
             }
         ],
