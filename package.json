@@ -36,7 +36,8 @@
             {
                 "provider": "github",
                 "owner": "boybekuru-ops",
-                "repo": "rpa-promotion-app"
+                "repo": "rpa-promotion-app",
+                "private": true
             }
         ],
         "asar": false

@@ -43,11 +43,16 @@ app.whenReady().then(() => {
 
     // Check for updates after the app is ready
     const GITHUB_TOKEN = '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';
+    
+    // Set headers for private repo
+    autoUpdater.requestHeaders = { "Authorization": `token ${GITHUB_TOKEN}` };
+    
     autoUpdater.setFeedURL({
         provider: 'github',
         owner: 'boybekuru-ops',
         repo: 'rpa-promotion-app',
-        token: GITHUB_TOKEN
+        token: GITHUB_TOKEN,
+        private: true
     });
 
     const logPath = path.join(app.getPath('userData'), 'update-log.txt');
