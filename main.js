@@ -42,7 +42,7 @@ app.whenReady().then(() => {
     });
 
     // Check for updates after the app is ready
-    const GITHUB_TOKEN = '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';
+    const GITHUB_TOKEN = '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';
     autoUpdater.setFeedURL({
         provider: 'github',
         owner: 'boybekuru-ops',
