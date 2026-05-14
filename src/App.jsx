@@ -74,7 +74,7 @@ function App() {
         <div className="dashboard">
             {/* Header */}
             <div className="header">
-                <h1>RPA ShopAt24 <span>Upload</span></h1>
+                <h1>Create a promotion: <span>Buy A get A free</span></h1>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <button className="theme-toggle-btn" onClick={toggleTheme} title={theme === 'muji' ? 'Switch to Neon' : 'Switch to MUJI'}>
                         {theme === 'muji' ? <Moon size={16} /> : <Sun size={16} />}
@@ -194,7 +194,7 @@ function App() {
 
             {/* Footer */}
             <div className="footer">
-                RPA ShopAt24 Upload &middot; Dashboard v1.0
+                RPA Promotion &middot; Dashboard v1.1
             </div>
         </div>
     );

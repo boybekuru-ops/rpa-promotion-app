@@ -16,7 +16,7 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: 1200,
         height: 800,
-        title: 'RPA Promotion A A',
+        title: 'Create a promotion: Buy A get A free',
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
