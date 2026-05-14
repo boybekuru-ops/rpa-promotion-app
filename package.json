@@ -1,0 +1,60 @@
+{
+    "name": "rpa-shopat24-upload",
+    "version": "1.0.0",
+    "main": "main.js",
+    "type": "module",
+    "scripts": {
+        "start": "electron .",
+        "server": "node server.js",
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "package": "vite build && electron-builder --win"
+    },
+    "build": {
+        "appId": "com.rpa.promotion",
+        "productName": "RPA Promotion",
+        "directories": {
+            "output": "release"
+        },
+        "win": {
+            "target": [
+                "nsis",
+                "portable"
+            ]
+        },
+        "files": [
+            "dist/**/*",
+            "main.js",
+            "server.js",
+            "config.js",
+            "gsheet-controller.js",
+            "package.json",
+            "node_modules/**/*"
+        ],
+        "publish": [
+            {
+                "provider": "github",
+                "owner": "boybakuru-ops",
+                "repo": "rpa-promotion-app"
+            }
+        ],
+        "asar": false
+    },
+    "dependencies": {
+        "cors": "^2.8.6",
+        "electron-updater": "^6.8.3",
+        "express": "^5.2.1",
+        "lucide-react": "^0.477.0",
+        "puppeteer": "^24.39.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-react": "^4.3.4",
+        "electron": "^42.0.1",
+        "electron-builder": "^26.8.1",
+        "electron-is-dev": "^3.0.1",
+        "vite": "^6.2.1"
+    }
+}
