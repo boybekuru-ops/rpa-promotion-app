@@ -1,6 +1,6 @@
 {
     "name": "rpa-shopat24-upload",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "main": "main.js",
     "type": "module",
     "scripts": {
@@ -13,7 +13,7 @@
     },
     "build": {
         "appId": "com.rpa.promotion",
-        "productName": "Create a promotion: Buy A get A free",
+        "productName": "RPA Promotion",
         "directories": {
             "output": "release"
         },
